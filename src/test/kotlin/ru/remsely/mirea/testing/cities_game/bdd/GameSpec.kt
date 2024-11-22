@@ -77,7 +77,7 @@ class GameSpec : BehaviorSpec ({ //./gradlew test --tests GameSpec
             Then("an timeout exception should be thrown") {
                 shouldThrow<TimeoutException> {
                     game.processCity(validCity)
-                }.message shouldBe "Time limit exceeded!"
+                }.message shouldBe "Time limit exceeded! You lost. Game has been reset to first city."
             }
 
             game.dropToFirst()
