@@ -23,7 +23,9 @@ class Game {
             throw IllegalArgumentException("City does not exists!")
 
         timeLimiter.isTimeLimitExceeded(Duration.between(lastAddition, Instant.now())) ->
-            throw TimeoutException("Time limit exceeded!")
+            dropToFirst().also {
+                throw TimeoutException("Time limit exceeded! You lost. Game has been reset to first city.")
+            }
 
         else -> addCity(newCity)
     }
