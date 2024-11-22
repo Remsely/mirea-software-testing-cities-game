@@ -30,11 +30,13 @@ class Game {
         else -> addCity(newCity)
     }
 
-    fun start(initCity: String) = when {
-        !cityValidator.isCityExists(initCity) ->
-            throw IllegalArgumentException("City does not exists!")
+    fun start(initCity: String) = citiesSet.clear().also {
+        when {
+            !cityValidator.isCityExists(initCity) ->
+                throw IllegalArgumentException("City does not exists!")
 
-        else -> addCity(initCity)
+            else -> addCity(initCity)
+        }
     }
 
     fun dropToFirst() = citiesSet.removeAll { it != citiesSet.first() }

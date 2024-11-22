@@ -22,7 +22,8 @@ class GameController {
 
     @PostMapping("/process")
     fun processCity(@RequestParam city: String): String {
-        return "City added: ${game.processCity(city)}."
+        game.processCity(city)
+        return "City added: $city."
     }
 
     @PostMapping("/reset")
