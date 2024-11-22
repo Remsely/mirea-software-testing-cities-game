@@ -5,11 +5,30 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
-class GameCityTests(unittest.TestCase):
+class GameCityTests(unittest.TestCase): # python web_app_tests.py
     def setUp(self):
         self.driver = webdriver.Chrome(
             executable_path="C:/Users/proko/Downloads/chromedriver-win64/chromedriver-win64/chromedriver.exe")
         self.driver.get("http://localhost:8080")
+
+    def test_elements_displayed(self):
+        header = self.driver.find_element(By.TAG_NAME, "h1")
+        self.assertTrue(header.is_displayed())
+
+        city_input = self.driver.find_element(By.ID, "cityInput")
+        self.assertTrue(city_input.is_displayed())
+
+        start_btn = self.driver.find_element(By.ID, "startBtn")
+        self.assertTrue(start_btn.is_displayed())
+
+        submit_btn = self.driver.find_element(By.ID, "submitBtn")
+        self.assertTrue(submit_btn.is_displayed())
+
+        reset_btn = self.driver.find_element(By.ID, "resetBtn")
+        self.assertTrue(reset_btn.is_displayed())
+
+        log_area = self.driver.find_element(By.ID, "logArea")
+        self.assertTrue(log_area.is_displayed())
 
     def test_process_city_success(self):
         driver = self.driver
